@@ -1,0 +1,8 @@
+{application, durandaal, [
+  {description, "Experimenting with Erlang events."},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications, [kernel, stdlib]},
+  {mod, {durandaal_app, []}},
+  {env, []}
+]}.
