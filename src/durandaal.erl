@@ -4,6 +4,7 @@
 
 start_link() ->
     {ok, Pid} = gen_event:start_link(),
+    register(durandaal_handler, Pid),
     io:format("Pid = ~p~n", [Pid]),
     gen_event:add_handler(Pid, durandaal_events, []),
     {ok, Pid}.
@@ -36,5 +37,6 @@ listen_queue(Channel) ->
             #'amqp_msg'{ payload = Payload } = Content,
             io:format("Content = ~p.~n", [Payload]),
             amqp_channel:cast(Channel, #'basic.ack'{delivery_tag = Tag}),
+            gen_event:notify(whereis(durandaal_handler), {incoming, { Payload }}),
             listen_queue(Channel)
     end.

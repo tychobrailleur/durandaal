@@ -12,6 +12,11 @@ init([]) ->
 handle_event(pouet, State) ->
     io:format("Pouet !~n"),
     {ok, State};
+handle_event({ incoming, { Payload } }, State) ->
+    Parsed = jsx:decode(Payload, [return_maps]),
+    Code = maps:get(<<"code">>, Parsed),
+    io:format("Found code ~p.~n", [Code]),
+    {ok, State};
 handle_event(_, State) ->
     {ok, State}.
 
