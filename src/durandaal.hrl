@@ -1,0 +1,2 @@
+-record(account, { id, name, contract_id, agent_id, date_created }).
+-record(agent, { id, name }).

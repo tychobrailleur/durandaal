@@ -9,4 +9,8 @@
  {<<"rabbit_common">>,
   {git,"https://github.com/jbrisbin/rabbit_common.git",
        {ref,"80814606ae23cc820c74e443383e192cd69ec030"}},
-  1}].
+  1},
+ {<<"uuid">>,
+  {git,"https://github.com/avtobiff/erlang-uuid.git",
+       {ref,"585c2474afb4a597ae8c8bf6d21e5a9c73f18e0b"}},
+  0}].
